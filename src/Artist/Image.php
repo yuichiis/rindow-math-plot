@@ -138,8 +138,8 @@ class Image implements DataArtist,Mappable
             $deltaY = 1;
             $minY = -0.5;
             $minX = -0.5;
-            $maxY = 0.5;
-            $maxX = 0.5;
+            $maxY = $yCount+0.5;
+            $maxX = $xCount+0.5;
         } else {
             [$minX,$minY,$maxX,$maxY] = $this->calcDataLimit();
             $deltaX = ($maxX-$minX)/$xCount;
