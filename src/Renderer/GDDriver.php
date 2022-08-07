@@ -20,7 +20,7 @@ class GDDriver
     protected $viewer = 'RINDOW_MATH_PLOT_VIEWER';
     protected $skipRunViewer = false;
     protected $mkdir = false;
-    protected $php80 = true;
+    protected $php80 = false;
 
     public function __construct(
         bool $bottomOrigin=null,
