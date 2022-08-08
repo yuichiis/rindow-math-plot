@@ -485,7 +485,8 @@ class Test extends TestCase
         $mo = new MatrixOperator;
         $plt = new Plot($config,$mo);
 
-        $plt->scatter($mo->arange(5),$mo->arange(5),$mo->arange(5),$color=null,$marker='D');
+        $sizes = $mo->array([100,200,300,400,500]);
+        $plt->scatter($mo->arange(5),$mo->arange(5),$sizes,$color=null,$marker='D');
         $plt->show();
         $this->assertTrue(true);
     }
