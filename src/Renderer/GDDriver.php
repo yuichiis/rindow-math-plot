@@ -19,6 +19,7 @@ class GDDriver
     protected $lastLineStyleColor;
     protected $viewer = 'RINDOW_MATH_PLOT_VIEWER';
     protected $skipRunViewer = false;
+    protected $execBackground = false;
     protected $mkdir = false;
     protected $php80 = false;
 
@@ -27,7 +28,8 @@ class GDDriver
         $image=null,
         string $filename=null,
         bool $skipCleaning=null,
-        bool $skipRunViewer=null)
+        bool $skipRunViewer=null,
+        bool $execBackground=null)
     {
         $this->php80 = (version_compare(phpversion(),'8.1.0')<0);
         if($bottomOrigin !== null) {
@@ -41,6 +43,9 @@ class GDDriver
         }
         if($skipRunViewer!==null) {
             $this->skipRunViewer = $skipRunViewer;
+        }
+        if($execBackground) {
+            $this->execBackground = $execBackground;
         }
         $this->setTempFile($filename);
         $this->colorNames = require __DIR__.'/rgb.inc.php';
@@ -299,6 +304,9 @@ class GDDriver
             $filename = '"'.$viewer.'" '.$filename;
         }
         if(!$this->skipRunViewer) {
+            if(PHP_OS=='Linux' && $this->execBackground) {
+                $filename = $filename.' > /dev/null &';
+            }
             system($filename);
         }
     }
