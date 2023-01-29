@@ -8,6 +8,7 @@ class GDDriver
 {
     protected $bottomOrigin = true;
     protected $image;
+    protected $filename;
     protected $width;
     protected $height;
     protected $yMax;
