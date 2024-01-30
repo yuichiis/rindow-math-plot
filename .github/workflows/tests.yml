@@ -9,9 +9,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: ['7.4','8.1','8.2','8.3']
-        phpunit: ['8.5','10.5','10.5','10.5']
-      max-parallel: 1
+        php: ['8.1','8.2','8.3']
   
     steps:
       - name: Checkout codes
@@ -26,7 +24,7 @@ jobs:
         uses: php-actions/phpunit@v3
         with:
           configuration: tests/phpunit.xml
-          version: ${{ matrix.phpunit }}
+          version: ${{ 10.5 }}
           php_version: ${{ matrix.php }}
           php_extensions: gd
         env:
