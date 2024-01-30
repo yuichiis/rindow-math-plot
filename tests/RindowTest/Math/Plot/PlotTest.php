@@ -1,5 +1,5 @@
 <?php
-namespace RindowTest\NeuralNetworks\Model\ModelLoaderTest;
+namespace RindowTest\NeuralNetworks\Model\PlotTest;
 
 use PHPUnit\Framework\TestCase;
 use Rindow\Math\Matrix\MatrixOperator;
@@ -8,7 +8,7 @@ use Rindow\Math\Plot\Renderer\GDDriver;
 use Interop\Polite\Math\Matrix\NDArray;
 use RuntimeException;
 
-class Test extends TestCase
+class PlotTest extends TestCase
 {
     public function getConfig()
     {
