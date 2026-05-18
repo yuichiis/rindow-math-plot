@@ -127,7 +127,9 @@ class GDDriver
 
     public function close()
     {
-        imagedestroy($this->image);
+        if(version_compare(phpversion(),'8.0.0')<0) {
+            imagedestroy($this->image);
+        }
     }
 
     public function point($x, $y, $color=null)
