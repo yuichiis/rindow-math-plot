@@ -4,6 +4,7 @@ on:
   push:
       branches:
           - master
+          - main
 
 jobs:
   tests:
@@ -32,7 +33,7 @@ jobs:
           php-version: ${{ matrix.php }}
           # PHP Extras
           coverage: none
-          tools: composer, phpunit:${{ matrix.phpunit }}
+          tools: composer
           #ini-values: "memory_limit=512M"
           extensions: gd
 
@@ -45,7 +46,9 @@ jobs:
       #    php_version: ${{ matrix.php }}
 
       - name: Composer
-        run: composer update
+        run: |
+          composer update
+          composer require phpunit/phpunit:"${{ matrix.phpunit }}.*" --dev
 
       #- name: PHPUnit Tests
       #  uses: php-actions/phpunit@v3
@@ -56,5 +59,8 @@ jobs:
       #    filter: ReleaseTest
 
       - name: PHPUnit Tests
-        run: PLOT_RENDERER_SKIP=true; export PLOT_RENDERER_SKIP; phpunit -c tests
+        run: |
+          PLOT_RENDERER_SKIP=true;
+          export PLOT_RENDERER_SKIP;
+          phpunit -c tests
 
